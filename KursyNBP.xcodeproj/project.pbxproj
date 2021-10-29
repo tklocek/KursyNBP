@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		7008AA6B272987530016A583 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7008AA6A272987530016A583 /* AppDelegate.swift */; };
 		7008AA6D272987530016A583 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7008AA6C272987530016A583 /* SceneDelegate.swift */; };
-		7008AA6F272987530016A583 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7008AA6E272987530016A583 /* ViewController.swift */; };
+		7008AA6F272987530016A583 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7008AA6E272987530016A583 /* MainVC.swift */; };
 		7008AA72272987530016A583 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7008AA70272987530016A583 /* Main.storyboard */; };
 		7008AA74272987550016A583 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7008AA73272987550016A583 /* Assets.xcassets */; };
 		7008AA77272987550016A583 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7008AA75272987550016A583 /* LaunchScreen.storyboard */; };
 		7008AA82272987550016A583 /* KursyNBPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7008AA81272987550016A583 /* KursyNBPTests.swift */; };
-		7008AA8C272987550016A583 /* KursyNBPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7008AA8B272987550016A583 /* KursyNBPUITests.swift */; };
-		7008AA8E272987550016A583 /* KursyNBPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7008AA8D272987550016A583 /* KursyNBPUITestsLaunchTests.swift */; };
+		70269362272C0E8A00B9C8DD /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269361272C0E8A00B9C8DD /* DetailsVC.swift */; };
+		70269364272C0ED500B9C8DD /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269363272C0ED500B9C8DD /* MainViewCell.swift */; };
+		70269366272C0EE300B9C8DD /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269365272C0EE300B9C8DD /* DetailViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 		7008AA67272987530016A583 /* KursyNBP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KursyNBP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7008AA6A272987530016A583 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7008AA6C272987530016A583 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7008AA6E272987530016A583 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7008AA6E272987530016A583 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		7008AA71272987530016A583 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7008AA73272987550016A583 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7008AA76272987550016A583 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,8 +48,9 @@
 		7008AA7D272987550016A583 /* KursyNBPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KursyNBPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7008AA81272987550016A583 /* KursyNBPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KursyNBPTests.swift; sourceTree = "<group>"; };
 		7008AA87272987550016A583 /* KursyNBPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KursyNBPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7008AA8B272987550016A583 /* KursyNBPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KursyNBPUITests.swift; sourceTree = "<group>"; };
-		7008AA8D272987550016A583 /* KursyNBPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KursyNBPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		70269361272C0E8A00B9C8DD /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
+		70269363272C0ED500B9C8DD /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
+		70269365272C0EE300B9C8DD /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,6 @@
 			children = (
 				7008AA69272987530016A583 /* KursyNBP */,
 				7008AA80272987550016A583 /* KursyNBPTests */,
-				7008AA8A272987550016A583 /* KursyNBPUITests */,
 				7008AA68272987530016A583 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,9 +100,12 @@
 		7008AA69272987530016A583 /* KursyNBP */ = {
 			isa = PBXGroup;
 			children = (
+				70269367272C115000B9C8DD /* Services */,
+				7008AA9C272B248C0016A583 /* Controller */,
+				7008AA9B272B24810016A583 /* View */,
+				7008AA9A272B24780016A583 /* Model */,
 				7008AA6A272987530016A583 /* AppDelegate.swift */,
 				7008AA6C272987530016A583 /* SceneDelegate.swift */,
-				7008AA6E272987530016A583 /* ViewController.swift */,
 				7008AA70272987530016A583 /* Main.storyboard */,
 				7008AA73272987550016A583 /* Assets.xcassets */,
 				7008AA75272987550016A583 /* LaunchScreen.storyboard */,
@@ -118,13 +122,36 @@
 			path = KursyNBPTests;
 			sourceTree = "<group>";
 		};
-		7008AA8A272987550016A583 /* KursyNBPUITests */ = {
+		7008AA9A272B24780016A583 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7008AA8B272987550016A583 /* KursyNBPUITests.swift */,
-				7008AA8D272987550016A583 /* KursyNBPUITestsLaunchTests.swift */,
 			);
-			path = KursyNBPUITests;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7008AA9B272B24810016A583 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70269363272C0ED500B9C8DD /* MainViewCell.swift */,
+				70269365272C0EE300B9C8DD /* DetailViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7008AA9C272B248C0016A583 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7008AA6E272987530016A583 /* MainVC.swift */,
+				70269361272C0E8A00B9C8DD /* DetailsVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		70269367272C115000B9C8DD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +285,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7008AA6F272987530016A583 /* ViewController.swift in Sources */,
+				70269364272C0ED500B9C8DD /* MainViewCell.swift in Sources */,
+				7008AA6F272987530016A583 /* MainVC.swift in Sources */,
+				70269362272C0E8A00B9C8DD /* DetailsVC.swift in Sources */,
+				70269366272C0EE300B9C8DD /* DetailViewCell.swift in Sources */,
 				7008AA6B272987530016A583 /* AppDelegate.swift in Sources */,
 				7008AA6D272987530016A583 /* SceneDelegate.swift in Sources */,
 			);
@@ -276,8 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7008AA8E272987550016A583 /* KursyNBPUITestsLaunchTests.swift in Sources */,
-				7008AA8C272987550016A583 /* KursyNBPUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -422,7 +450,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -439,13 +467,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DZ8G929RG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KursyNBP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,7 +486,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -466,13 +497,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DZ8G929RG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KursyNBP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -482,7 +516,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -491,8 +525,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DZ8G929RG;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -515,8 +551,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DZ8G929RG;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -540,6 +578,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DZ8G929RG;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -562,6 +601,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5DZ8G929RG;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
