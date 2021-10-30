@@ -23,41 +23,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VAr-zx-37f">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VAr-zx-37f">
                                 <rect key="frame" x="20" y="129" width="374" height="32"/>
                                 <segments>
                                     <segment title="Tabela A"/>
                                     <segment title="Tabela B"/>
                                     <segment title="Tabela C"/>
                                 </segments>
+                                <connections>
+                                    <action selector="tableSegmentedControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="752-pK-ePj"/>
+                                </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="G76-i0-I29">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="G76-i0-I29">
                                 <rect key="frame" x="0.0" y="160" width="414" height="736"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="18c-bm-Nlf">
+                                    <rect key="frame" x="0.0" y="137" width="414" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="6cK-UY-3Ir" customClass="MainViewCell" customModule="KursyNBP" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainViewCell" rowHeight="70" id="6cK-UY-3Ir" customClass="MainViewCell" customModule="KursyNBP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6cK-UY-3Ir" id="W2G-8w-1bl">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItU-Xx-7eZ">
-                                                    <rect key="frame" x="359" y="15" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="8ff-5n-c6D"/>
-                                                        <constraint firstAttribute="width" constant="40" id="uFk-2j-dRn"/>
-                                                    </constraints>
-                                                    <color key="tintColor" systemColor="systemGray4Color"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="star" catalog="system" title="" buttonSize="medium"/>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00022121" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEK-xE-07a">
-                                                    <rect key="frame" x="230.5" y="23.5" width="93.5" height="23.5"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7ij-0K-x82">
                                                     <rect key="frame" x="20" y="12" width="128.5" height="45"/>
                                                     <subviews>
@@ -75,17 +66,25 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00022121" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEK-xE-07a">
+                                                    <rect key="frame" x="295.5" y="23" width="93.5" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cEK-xE-07a" firstAttribute="centerY" secondItem="ItU-Xx-7eZ" secondAttribute="centerY" id="0eY-RP-WuY"/>
                                                 <constraint firstItem="7ij-0K-x82" firstAttribute="leading" secondItem="W2G-8w-1bl" secondAttribute="leading" constant="20" id="B5O-a3-ggQ"/>
-                                                <constraint firstItem="ItU-Xx-7eZ" firstAttribute="leading" secondItem="cEK-xE-07a" secondAttribute="trailing" constant="35" id="E1l-aE-pw1"/>
+                                                <constraint firstItem="cEK-xE-07a" firstAttribute="centerY" secondItem="7ij-0K-x82" secondAttribute="centerY" id="bdG-0g-P9m"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="cEK-xE-07a" secondAttribute="trailing" constant="5" id="ccr-8F-iov"/>
                                                 <constraint firstItem="7ij-0K-x82" firstAttribute="top" secondItem="W2G-8w-1bl" secondAttribute="top" constant="12" id="chN-Zr-kkn"/>
-                                                <constraint firstAttribute="bottom" secondItem="ItU-Xx-7eZ" secondAttribute="bottom" constant="15" id="pDN-Y4-1SQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="ItU-Xx-7eZ" secondAttribute="trailing" constant="15" id="vHk-Sp-Ler"/>
-                                                <constraint firstItem="ItU-Xx-7eZ" firstAttribute="top" secondItem="W2G-8w-1bl" secondAttribute="top" constant="15" id="zUp-IR-JCb"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="currencyCodeLbl" destination="3od-a6-Ad2" id="oqf-kU-TKu"/>
+                                            <outlet property="currencyNameLbl" destination="I33-PJ-wiv" id="eqc-Gz-hv7"/>
+                                            <outlet property="currencyValueLbl" destination="cEK-xE-07a" id="hXA-Sy-Xku"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -105,6 +104,9 @@
                                 <rect key="frame" x="376.5" y="66" width="17.5" height="21"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="refreshBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GsY-NT-aL6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -127,6 +129,13 @@
                             <constraint firstItem="eRr-pQ-I8j" firstAttribute="centerY" secondItem="Dl8-8T-fN5" secondAttribute="centerY" id="w9W-x3-ubA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="18c-bm-Nlf" id="gLn-gU-8RC"/>
+                        <outlet property="ratesDateLbl" destination="Hg7-e2-dDE" id="25s-Xg-KWV"/>
+                        <outlet property="refreshBtn" destination="eRr-pQ-I8j" id="mSb-L8-Ieo"/>
+                        <outlet property="tableSegmentedControl" destination="VAr-zx-37f" id="unq-Ua-IrX"/>
+                        <outlet property="tableView" destination="G76-i0-I29" id="QXl-Uo-7Dy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,6 +187,10 @@
                                 <rect key="frame" x="0.0" y="183" width="414" height="713"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="Kkr-WU-uBe">
+                                    <rect key="frame" x="0.0" y="110.5" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CuS-1q-pkY" customClass="DetailViewCell" customModule="KursyNBP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -223,12 +236,8 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="arrow.left.and.right" catalog="system" width="128" height="78"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

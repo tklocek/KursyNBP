@@ -9,11 +9,155 @@ import UIKit
 
 class MainVC: UIViewController {
 
+    //Outletls
+    @IBOutlet weak var refreshBtn: UIButton!
+    @IBOutlet weak var ratesDateLbl: UILabel!
+    @IBOutlet weak var tableSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    //Vars
+    private var currentTable: CurrencyTable = .a
+    
+    
+    private var rowCount: Int = 0 {
+        didSet {
+            
+            
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
+        setUpScreen()
     }
 
+    private func setUpScreen() {
 
+        refreshData()
+      
+        
+    }
+    
+    
+    
+    @IBAction func refreshBtnPressed(_ sender: Any) {
+        activityIndicator.startAnimating()
+
+        refreshData()
+        
+        
+    }
+    
+    
+    
+    
+    
+    @IBAction func tableSegmentedControlChanged(_ sender: Any) {
+
+        switch tableSegmentedControl.selectedSegmentIndex {
+        case 1: currentTable = .b
+        case 2: currentTable = .c
+        default: currentTable = .a
+        }
+        
+        refreshData()
+    }
+    
+    
+    private func reloadTable() {
+        tableView.reloadData()
+        
+    }
+    
+    private func downloadData() {
+        
+        
+        
+    }
+    
+    
+    private func refreshData() {
+        activityIndicator.startAnimating()
+
+        let net = Networking()
+        net.fetchTable(table: currentTable) { result in
+            if let result = result {
+                
+                do {
+                    if self.currentTable != .c {
+                        let decoded = try JSONDecoder().decode([ABTable].self, from: result)
+                        DataService.instance.saveTableData(rawData: decoded[0])
+                    } else {
+                        //                            let decoded = try JSONDecoder().decode([CTable].self, from: result)
+                        //                            DataService.instance.saveTableData(rawData: decoded[0])
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.reloadTable()
+                        self.ratesDateLbl.text = DataService.instance.currencyDate
+                        self.activityIndicator.stopAnimating()
+                    }
+                    
+                } catch {
+                    debugPrint("Error while decoding JSON data from API", error)
+                }
+                
+                
+                
+            } else {
+#warning("Add Error message")
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+extension MainVC: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DataService.instance.ratesCount(for: currentTable)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "MainViewCell", for: indexPath) as? MainViewCell {
+            guard let cellData = DataService.instance.getOneCurrency(for: currentTable, at: indexPath.item) else
+            {
+                return MainViewCell()
+                
+            }
+            
+            cell.updateView(currency: cellData)
+            
+            return cell
+        }
+        
+        
+        return MainViewCell()
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 
