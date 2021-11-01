@@ -38,11 +38,35 @@ class DataService {
         switch currentTable {
         case "A": self.tableA = tempCurrencies
         case "B": self.tableB = tempCurrencies
-        case "C": break
         default: break
         }
-        
     }
+    
+    func saveTableData(rawData: CTable) {
+        var tempCurrencies: [Currency] = []
+        
+        self.currencyDate = rawData.effectiveDate
+        let currentTable = rawData.table
+        let rates = rawData.rates
+        
+        rates.forEach { oneRate in
+            let name = oneRate.currency
+            let code = oneRate.code
+            
+            let average = (oneRate.ask + oneRate.bid) / 2
+            
+            let (multi, value) = self.changeDecimalPoint(value: average)
+            
+            let currency = Currency(currency: name, code: code, multiplier: multi, value: value)
+            tempCurrencies.append(currency)
+        }
+        
+        switch currentTable {
+        case "C": self.tableC = tempCurrencies
+        default: break
+        }
+    }
+    
     
     func ratesCount(for table: CurrencyTable) -> Int {
         switch table {

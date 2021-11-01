@@ -50,8 +50,7 @@ class MainVC: UIViewController {
     
     
     @IBAction func refreshBtnPressed(_ sender: Any) {
-        activityIndicator.startAnimating()
-
+        
         refreshData()
         
         
@@ -97,8 +96,8 @@ class MainVC: UIViewController {
                         let decoded = try JSONDecoder().decode([ABTable].self, from: result)
                         DataService.instance.saveTableData(rawData: decoded[0])
                     } else {
-                        //                            let decoded = try JSONDecoder().decode([CTable].self, from: result)
-                        //                            DataService.instance.saveTableData(rawData: decoded[0])
+                        let decoded = try JSONDecoder().decode([CTable].self, from: result)
+                        DataService.instance.saveTableData(rawData: decoded[0])
                     }
                     
                     DispatchQueue.main.async {
