@@ -141,7 +141,9 @@ class DataService {
         }
     }
     
-    
+    func clearHistData() {
+        self.historical.removeAll()
+    }
     
     private func changeDecimalPoint(value: Decimal) -> (Int,Decimal) {
         let currentDecimalDigits = value.significantFractionalDecimalDigits

@@ -27,7 +27,10 @@ class DetailABViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
+    func updateView(histData: CurrencyHist) {
+        self.dateLbl.text = histData.date
+        self.valueLbl.text = histData.mid.formattedAmount
+    }
     
     
 }

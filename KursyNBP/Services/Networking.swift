@@ -27,17 +27,21 @@ class Networking {
         
         URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
             completion(data)
-        }).resume()
-        
-        
-        
+        }).resume() 
     }
     
     
     func fetchHistory(for code: String, in table: CurrencyTable, from startDate:String, to endDate:String,  completion: @escaping (_ result: Data?) -> Void) {
-"http://api.nbp.pl/api/exchangerates/rates/{table}/{code}/{startDate}/{endDate}/"
+   
+        let query = "https://api.nbp.pl/api/exchangerates/rates/\(table)/\(code)/\(startDate)/\(endDate)/"
+        
+        guard let url = URL(string: query) else { fatalError("Invalid string query")}
+
         
         
+        URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
+            completion(data)
+        }).resume()
         
     }
 

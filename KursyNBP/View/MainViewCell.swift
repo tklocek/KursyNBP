@@ -31,14 +31,7 @@ class MainViewCell: UITableViewCell {
     func updateView(currency: Currency) {
         self.currencyNameLbl.text = currency.currency
         self.currencyCodeLbl.text =   "\(currency.multiplier) \(currency.code)"
-        
-        let handler = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.bankers, scale: 4, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-        let num = NSDecimalNumber.init(decimal: currency.value)
-        
-         
-        self.currencyValueLbl.text =  currency.value.significantFractionalDecimalDigits > 4 ?  num.rounding(accordingToBehavior: handler).stringValue : num.stringValue
-        
-        
+        self.currencyValueLbl.text =  currency.value.formattedAmount
     }
     
     

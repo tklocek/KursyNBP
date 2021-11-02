@@ -37,6 +37,9 @@ class DetailsVC: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         currencyNameLbl.text = currency.currency
         currencyCodeLbl.text = currency.code
         
@@ -47,44 +50,47 @@ class DetailsVC: UIViewController {
     
     func setupView() {
         calendarTo.maximumDate = Date()
-        
+        calendarFrom.date = Calendar.current.date(byAdding: .day, value: -30, to: Date() ) ?? Date()
         calendarFrom.maximumDate = Date()
+        downloadData()
         activityIndicator.stopAnimating()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        dismiss(animated: true, completion: nil)
+        clearAll()
     }
     
     
-    
     @IBAction func backBtnPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        clearAll()
     }
     
     @IBAction func reloadBtnPressed(_ sender: Any) {
         activityIndicator.startAnimating()
+        DataService.instance.clearHistData()
+        reloadTable()
         downloadData()
     }
-    
     
     @IBAction func fromDateEdited(_ sender: Any) {
         checkValidationOfDates()
     }
     
-  
     @IBAction func toDateEdited(_ sender: Any) {
         checkValidationOfDates()
     }
     
+    private func clearAll() {
+        DataService.instance.clearHistData()
+        dismiss(animated: true, completion: nil)
+    }
     
     private func checkValidationOfDates() {
-        
         reloadBtn.isEnabled = false
         do {
             try validateDateSetup()
             reloadBtn.isEnabled = true
+            downloadData()
         }
        catch DateError.fromMoreThanTo {
            errorMessage(title: "Źle wybrane daty", message: "Data początkowa musi być mniejsza lub równa dacie końcowej. Zmień daty aby kontynuować.")
@@ -199,20 +205,43 @@ extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailViewCell", for: indexPath) as? DetailABViewCell {
-//            guard let cellData = DataService.instance.getOneCurrency(for: currentTable, at: indexPath.item) else
-//            {
-//                return MainViewCell()
-//
-//            }
-//
-//            cell.updateView(currency: cellData)
-//
-            return cell
+        
+        if currentTable == .c {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCViewCell", for: indexPath) as? DetailCViewCell {
+                guard let cellData = DataService.instance.getOneHistData(at: indexPath.item) else
+                {
+                    return DetailCViewCell()
+                }
+    
+                cell.updateView(histData: cellData)
+    
+                return cell
+            }
+            
+            return DetailCViewCell()
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailABViewCell", for: indexPath) as? DetailABViewCell {
+                guard let cellData = DataService.instance.getOneHistData(at: indexPath.item) else
+                {
+                    return DetailABViewCell()
+                }
+    
+                cell.updateView(histData: cellData)
+    
+                return cell
+            }
+            
+            
+            return DetailABViewCell()
         }
         
         
-        return DetailABViewCell()
+        
+        
+        
+        
+        
+        
         
         
         

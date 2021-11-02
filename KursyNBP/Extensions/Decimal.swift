@@ -12,6 +12,15 @@ extension Decimal {
         return max(-exponent, 0)
     }
     
+    var formattedAmount: String? {
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.minimumFractionDigits = 4
+        formatter.maximumFractionDigits = 4
+        return formatter.string(from: self as NSDecimalNumber)
+    }
+    
+    
 }
 
 
