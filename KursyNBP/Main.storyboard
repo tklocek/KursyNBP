@@ -200,6 +200,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="pT0-Ot-3go"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="toDateEdited:" destination="DOl-wA-pRd" eventType="editingDidEnd" id="rHe-Kj-oiL"/>
+                                        </connections>
                                     </datePicker>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-v8-Zxy">
                                         <rect key="frame" x="10" y="109" width="100" height="31"/>
@@ -253,7 +256,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CuS-1q-pkY" customClass="DetailViewCell" customModule="KursyNBP" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CuS-1q-pkY" customClass="DetailABViewCell" customModule="KursyNBP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CuS-1q-pkY" id="Tgy-Cl-c36">
@@ -298,7 +301,7 @@
                                             <outlet property="valueLbl" destination="qV5-Z1-3B7" id="ony-Gi-n0p"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Vir-qa-gjf" customClass="DetailViewCell" customModule="KursyNBP" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Vir-qa-gjf" customClass="DetailCViewCell" customModule="KursyNBP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="87.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vir-qa-gjf" id="dSd-Xc-Rnx">

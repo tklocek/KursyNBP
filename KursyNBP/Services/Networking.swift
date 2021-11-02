@@ -11,6 +11,11 @@ enum CurrencyTable{
     case a,b,c
 }
 
+enum NetworkError: Error {
+    case InvalidStringQuery
+    case tooManyDaysBetween
+}
+
 class Networking {
     
     func fetchTable(table: CurrencyTable, completion: @escaping (_ result: Data?) -> Void   ) {
@@ -29,7 +34,7 @@ class Networking {
     }
     
     
-    func fetchHistory(for code: String, in table: CurrencyTable, from startDate:String, to endDate:String) {
+    func fetchHistory(for code: String, in table: CurrencyTable, from startDate:String, to endDate:String,  completion: @escaping (_ result: Data?) -> Void) {
 "http://api.nbp.pl/api/exchangerates/rates/{table}/{code}/{startDate}/{endDate}/"
         
         

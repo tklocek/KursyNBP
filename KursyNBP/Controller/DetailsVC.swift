@@ -18,7 +18,7 @@ class DetailsVC: UIViewController {
 
     //VARs
     var currency: Currency!
-    
+    var currentTable: CurrencyTable!
     
     
     @IBOutlet weak var currencyNameLbl: UILabel!
@@ -47,6 +47,7 @@ class DetailsVC: UIViewController {
     
     func setupView() {
         calendarTo.maximumDate = Date()
+        
         calendarFrom.maximumDate = Date()
         activityIndicator.stopAnimating()
         
@@ -64,28 +65,37 @@ class DetailsVC: UIViewController {
     
     @IBAction func reloadBtnPressed(_ sender: Any) {
         activityIndicator.startAnimating()
-    
+        downloadData()
     }
     
     
     @IBAction func fromDateEdited(_ sender: Any) {
-        
-         do {
-             try validateDateSetup()
-         }
-        catch DateError.fromMoreThanTo {
-            errorMessage(title: "Źle wybrane daty", message: "Data początkowa musi być mniejsza lub równa dacie końcowej. Zmień daty aby kontynuować.")
-            
-         }
-        catch DateError.tooManyDaysBetween {
-            errorMessage(title: "Za duża odległość pomiędzy dniami", message: "Bank NBP wymaga aby maksymalny odstęp między datami nie był większy niż 90 dni. \nProszę wybrać inne daty.")
-        } catch {
-            errorMessage(title: "Błąd", message: "Wystąpił nieokreślony błąd")
-        }
-        
+        checkValidationOfDates()
     }
     
   
+    @IBAction func toDateEdited(_ sender: Any) {
+        checkValidationOfDates()
+    }
+    
+    
+    private func checkValidationOfDates() {
+        
+        reloadBtn.isEnabled = false
+        do {
+            try validateDateSetup()
+            reloadBtn.isEnabled = true
+        }
+       catch DateError.fromMoreThanTo {
+           errorMessage(title: "Źle wybrane daty", message: "Data początkowa musi być mniejsza lub równa dacie końcowej. Zmień daty aby kontynuować.")
+        }
+       catch DateError.tooManyDaysBetween {
+           errorMessage(title: "Za duża odległość pomiędzy dniami", message: "Bank NBP wymaga aby maksymalny odstęp między datami nie był większy niż 90 dni. \nProszę wybrać inne daty.")
+       } catch {
+           errorMessage(title: "Błąd", message: "Wystąpił nieokreślony błąd")
+       }
+        
+    }
     
     
     private func validateDateSetup() throws {
@@ -131,7 +141,51 @@ class DetailsVC: UIViewController {
         
     }
     
-
+    
+    
+    
+    private func downloadData() {
+        activityIndicator.startAnimating()
+        
+        let net = Networking()
+        
+        let fromDate = dateToStr(date: calendarFrom.date, format: "yyyy-MM-dd")
+        let toDate = dateToStr(date: calendarTo.date, format: "yyyy-MM-dd")
+        
+        net.fetchHistory(for: currency.code, in: currentTable, from: fromDate, to: toDate) { result in
+            if let result = result {
+                
+                do {
+                    if self.currentTable != .c {
+                        let decoded = try JSONDecoder().decode(ABTableHist.self, from: result)
+                        DataService.instance.saveHistData(rawData: decoded)
+                    } else {
+                        let decoded = try JSONDecoder().decode(CTableHist.self, from: result)
+                        DataService.instance.saveHistData(rawData: decoded)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.reloadTable()
+                        self.activityIndicator.stopAnimating()
+                    }
+                    
+                } catch {
+                    debugPrint("Error while decoding JSON data from API", error)
+                }
+                
+                
+                
+            } else {
+#warning("Add Error message")
+            }
+        }
+        
+        
+    }
+    
+    private func reloadTable() {
+        tableView.reloadData()
+    }
     
     
     
@@ -141,11 +195,11 @@ class DetailsVC: UIViewController {
 extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return DataService.instance.historicalDataCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailViewCell", for: indexPath) as? DetailViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "DetailViewCell", for: indexPath) as? DetailABViewCell {
 //            guard let cellData = DataService.instance.getOneCurrency(for: currentTable, at: indexPath.item) else
 //            {
 //                return MainViewCell()
@@ -158,7 +212,7 @@ extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        return DetailViewCell()
+        return DetailABViewCell()
         
         
         

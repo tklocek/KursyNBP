@@ -15,7 +15,7 @@
 		7008AA82272987550016A583 /* KursyNBPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7008AA81272987550016A583 /* KursyNBPTests.swift */; };
 		70269362272C0E8A00B9C8DD /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269361272C0E8A00B9C8DD /* DetailsVC.swift */; };
 		70269364272C0ED500B9C8DD /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269363272C0ED500B9C8DD /* MainViewCell.swift */; };
-		70269366272C0EE300B9C8DD /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269365272C0EE300B9C8DD /* DetailViewCell.swift */; };
+		70269366272C0EE300B9C8DD /* DetailABViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269365272C0EE300B9C8DD /* DetailABViewCell.swift */; };
 		7026936A272C392000B9C8DD /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269369272C392000B9C8DD /* DispatchQueue.swift */; };
 		7026936E272C479000B9C8DD /* ABTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7026936D272C479000B9C8DD /* ABTable.swift */; };
 		70269370272C4F6000B9C8DD /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7026936F272C4F6000B9C8DD /* Networking.swift */; };
@@ -25,9 +25,10 @@
 		70269381272C918800B9C8DD /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269380272C918800B9C8DD /* Helpers.swift */; };
 		70269383272D46EF00B9C8DD /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269382272D46EF00B9C8DD /* Decimal.swift */; };
 		702693852730371A00B9C8DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702693842730371A00B9C8DD /* Main.storyboard */; };
-		7026938727304F0C00B9C8DD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7026938627304F0C00B9C8DD /* Errors.swift */; };
 		70893821273102C900942294 /* ABTableHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893820273102C900942294 /* ABTableHist.swift */; };
 		70893823273102DB00942294 /* CTableHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893822273102DB00942294 /* CTableHist.swift */; };
+		708938252731102A00942294 /* CurrencyHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708938242731102A00942294 /* CurrencyHist.swift */; };
+		70893827273128E300942294 /* DetailCViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893826273128E300942294 /* DetailCViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +61,7 @@
 		7008AA87272987550016A583 /* KursyNBPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KursyNBPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70269361272C0E8A00B9C8DD /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		70269363272C0ED500B9C8DD /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
-		70269365272C0EE300B9C8DD /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
+		70269365272C0EE300B9C8DD /* DetailABViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailABViewCell.swift; sourceTree = "<group>"; };
 		70269369272C392000B9C8DD /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		7026936D272C479000B9C8DD /* ABTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTable.swift; sourceTree = "<group>"; };
 		7026936F272C4F6000B9C8DD /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -70,9 +71,10 @@
 		70269380272C918800B9C8DD /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		70269382272D46EF00B9C8DD /* Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
 		702693842730371A00B9C8DD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		7026938627304F0C00B9C8DD /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		70893820273102C900942294 /* ABTableHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ABTableHist.swift; path = "../../../../../../Desktop/Good.Energy System/ABTableHist.swift"; sourceTree = "<group>"; };
 		70893822273102DB00942294 /* CTableHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableHist.swift; sourceTree = "<group>"; };
+		708938242731102A00942294 /* CurrencyHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHist.swift; sourceTree = "<group>"; };
+		70893826273128E300942294 /* DetailCViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				70269378272C54D200B9C8DD /* CTable.swift */,
 				7026937A272C5FC400B9C8DD /* Currency.swift */,
 				70893820273102C900942294 /* ABTableHist.swift */,
+				708938242731102A00942294 /* CurrencyHist.swift */,
 				70893822273102DB00942294 /* CTableHist.swift */,
 			);
 			path = Model;
@@ -162,7 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				70269363272C0ED500B9C8DD /* MainViewCell.swift */,
-				70269365272C0EE300B9C8DD /* DetailViewCell.swift */,
+				70269365272C0EE300B9C8DD /* DetailABViewCell.swift */,
+				70893826273128E300942294 /* DetailCViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				70269380272C918800B9C8DD /* Helpers.swift */,
-				7026938627304F0C00B9C8DD /* Errors.swift */,
 				702693882730506100B9C8DD /* New Group */,
 			);
 			path = Helpers;
@@ -342,8 +345,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				708938252731102A00942294 /* CurrencyHist.swift in Sources */,
 				70269379272C54D200B9C8DD /* CTable.swift in Sources */,
-				7026938727304F0C00B9C8DD /* Errors.swift in Sources */,
 				70269381272C918800B9C8DD /* Helpers.swift in Sources */,
 				70269364272C0ED500B9C8DD /* MainViewCell.swift in Sources */,
 				70269370272C4F6000B9C8DD /* Networking.swift in Sources */,
@@ -351,8 +354,9 @@
 				70269377272C545200B9C8DD /* DataService.swift in Sources */,
 				7008AA6F272987530016A583 /* MainVC.swift in Sources */,
 				70269362272C0E8A00B9C8DD /* DetailsVC.swift in Sources */,
-				70269366272C0EE300B9C8DD /* DetailViewCell.swift in Sources */,
+				70269366272C0EE300B9C8DD /* DetailABViewCell.swift in Sources */,
 				70269383272D46EF00B9C8DD /* Decimal.swift in Sources */,
+				70893827273128E300942294 /* DetailCViewCell.swift in Sources */,
 				7008AA6B272987530016A583 /* AppDelegate.swift in Sources */,
 				7026936A272C392000B9C8DD /* DispatchQueue.swift in Sources */,
 				7026936E272C479000B9C8DD /* ABTable.swift in Sources */,

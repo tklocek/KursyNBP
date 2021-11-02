@@ -139,6 +139,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource{
         if let vc = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
             
             vc.currency = DataService.instance.getOneCurrency(for: currentTable, at: indexPath.row)
+            vc.currentTable = currentTable
             self.present(vc, animated: true)
         }
         

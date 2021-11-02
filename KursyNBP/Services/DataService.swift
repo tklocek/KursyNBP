@@ -17,7 +17,7 @@ class DataService {
     private var tableA: [Currency] = []
     private var tableB: [Currency] = []
     private var tableC: [Currency] = []
-    
+    private var historical: [CurrencyHist] = []
     
     func saveTableData(rawData: ABTable) {
         var tempCurrencies: [Currency] = []
@@ -67,6 +67,55 @@ class DataService {
         }
     }
     
+    func saveHistData(rawData: CTableHist) {
+        var tempHist: [CurrencyHist] = []
+        
+        let rates = rawData.rates
+        var multiplyer: Decimal = 0.0
+        
+        rates.forEach { oneRate in
+            let date = oneRate.effectiveDate
+         
+            if multiplyer == 0 {
+                let (multi, _) = self.changeDecimalPoint(value: oneRate.ask)
+                multiplyer = Decimal(multi)
+            }
+            
+            let bid = oneRate.bid * multiplyer
+            let ask = oneRate.ask * multiplyer
+            
+            let average = (ask + bid) / 2
+            
+            let histData = CurrencyHist(date: date, mid: average, ask: ask, bid: bid)
+            tempHist.append(histData)
+        }
+        
+        
+        historical = tempHist
+    }
+    
+    func saveHistData(rawData: ABTableHist) {
+        var tempHist: [CurrencyHist] = []
+        
+        let rates = rawData.rates
+        var multiplyer: Decimal = 0.0
+        
+        rates.forEach { oneRate in
+            let date = oneRate.effectiveDate
+         
+            if multiplyer == 0 {
+                let (multi, _) = self.changeDecimalPoint(value: oneRate.mid)
+                multiplyer = Decimal(multi)
+            }
+            
+            let average = oneRate.mid * multiplyer / 2
+            
+            let histData = CurrencyHist(date: date, mid: average, ask: nil, bid: nil)
+            tempHist.append(histData)
+        }
+        
+        historical = tempHist
+    }
     
     func ratesCount(for table: CurrencyTable) -> Int {
         switch table {
@@ -74,6 +123,14 @@ class DataService {
         case .b: return tableB.count
         case .c: return tableC.count
         }
+    }
+    
+    func historicalDataCount() -> Int {
+        return historical.count
+    }
+    
+    func getOneHistData(at index: Int) -> CurrencyHist? {
+        return index < historical.count ? historical[index] : nil
     }
     
     func getOneCurrency(for table: CurrencyTable, at index: Int) -> Currency? {

@@ -1,21 +1,14 @@
 //
-//  DetailViewCell.swift
+//  DetailCViewCell.swift
 //  KursyNBP
 //
-//  Created by Tomasz Klocek on 2021-10-29.
+//  Created by Tomasz Klocek on 2021-11-02.
 //
 
 import UIKit
 
-class DetailViewCell: UITableViewCell {
+class DetailCViewCell: UITableViewCell {
 
-    
-    @IBOutlet weak var dateLbl: UILabel!
-    @IBOutlet weak var valueLbl: UILabel!
-    
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
