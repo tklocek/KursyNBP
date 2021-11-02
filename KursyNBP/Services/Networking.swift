@@ -29,8 +29,13 @@ class Networking {
     }
     
     
-    
-    
+    func fetchHistory(for code: String, in table: CurrencyTable, from startDate:String, to endDate:String) {
+"http://api.nbp.pl/api/exchangerates/rates/{table}/{code}/{startDate}/{endDate}/"
+        
+        
+        
+    }
+
     
    
     

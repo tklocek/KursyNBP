@@ -131,6 +131,24 @@ class MainVC: UIViewController {
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource{
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // note that indexPath.section is used rather than indexPath.row
+        print("You tapped cell number \(indexPath.row).")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
+            
+            vc.currency = DataService.instance.getOneCurrency(for: currentTable, at: indexPath.row)
+            self.present(vc, animated: true)
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataService.instance.ratesCount(for: currentTable)
     }

@@ -9,6 +9,13 @@ import UIKit
 
 class DetailViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var valueLbl: UILabel!
+    
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
