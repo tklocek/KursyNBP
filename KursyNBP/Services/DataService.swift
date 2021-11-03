@@ -124,13 +124,13 @@ class DataService {
         case .c: return tableC.count
         }
     }
-    
-    func historicalDataCount() -> Int {
-        return historical.count
-    }
-    
-    func getOneHistData(at index: Int) -> CurrencyHist? {
-        return index < historical.count ? historical[index] : nil
+
+    func clearData(for table:CurrencyTable) {
+        switch table {
+        case .a: tableA.removeAll()
+        case .b: tableB.removeAll()
+        case .c: tableC.removeAll()
+        }
     }
     
     func getOneCurrency(for table: CurrencyTable, at index: Int) -> Currency? {
@@ -141,9 +141,19 @@ class DataService {
         }
     }
     
+    func historicalDataCount() -> Int {
+        return historical.count
+    }
+    
+    func getOneHistData(at index: Int) -> CurrencyHist? {
+        return index < historical.count ? historical[index] : nil
+    }
+    
     func clearHistData() {
         self.historical.removeAll()
     }
+    
+
     
     private func changeDecimalPoint(value: Decimal) -> (Int,Decimal) {
         let currentDecimalDigits = value.significantFractionalDecimalDigits

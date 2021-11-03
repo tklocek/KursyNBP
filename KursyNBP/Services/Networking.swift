@@ -13,16 +13,23 @@ enum CurrencyTable{
 
 
 class Networking {
-    
-    func fetchTable(table: CurrencyTable, completion: @escaping (_ result: Data?) -> Void   ) {
+        
+    static func fetchTable(table: CurrencyTable, completion: @escaping (Result<Data, Error>) -> ()) {
         let query = "https://api.nbp.pl/api/exchangerates/tables/\(table)"
         
         guard let url = URL(string: query) else { fatalError("Invalid string query") }
         
         
         URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-            completion(data)
-        }).resume() 
+            guard let responseData = data, error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            
+            completion(.success(responseData))
+            
+        }).resume()
+        
     }
     
     

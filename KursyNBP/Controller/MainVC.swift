@@ -8,27 +8,16 @@
 import UIKit
 
 class MainVC: UIViewController {
-
+    
     //Outletls
     @IBOutlet weak var refreshBtn: UIButton!
     @IBOutlet weak var ratesDateLbl: UILabel!
     @IBOutlet weak var tableSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //Vars
     private var currentTable: CurrencyTable = .a
-    
-    
-    private var rowCount: Int = 0 {
-        didSet {
-            
-            
-        }
-    }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,32 +25,18 @@ class MainVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
-        setUpScreen()
-    }
-
-    private func setUpScreen() {
-
         refreshData()
-      
-        
     }
-    
     
     
     @IBAction func refreshBtnPressed(_ sender: Any) {
-        
+        DataService.instance.clearData(for: currentTable)
+        reloadTable()
         refreshData()
-        
-        
     }
     
-    
-    
-    
-    
     @IBAction func tableSegmentedControlChanged(_ sender: Any) {
-
+        
         switch tableSegmentedControl.selectedSegmentIndex {
         case 1: currentTable = .b
         case 2: currentTable = .c
@@ -78,49 +53,53 @@ class MainVC: UIViewController {
     }
     
     private func downloadData() {
-        
-        
-        
-    }
-    
-    
-    private func refreshData() {
-        activityIndicator.startAnimating()
-
-        let net = Networking()
-        net.fetchTable(table: currentTable) { result in
-            if let result = result {
-                
+        Networking.fetchTable(table: currentTable) { result in
+            switch result{
+            case .failure(let error):
+                ShowError.alert(title: "Niezidentyfikowany błąd sieciowy", message: error.localizedDescription, self)
+            case .success(let data):
                 do {
                     if self.currentTable != .c {
-                        let decoded = try JSONDecoder().decode([ABTable].self, from: result)
+                        let decoded = try JSONDecoder().decode([ABTable].self, from: data)
                         DataService.instance.saveTableData(rawData: decoded[0])
                     } else {
-                        let decoded = try JSONDecoder().decode([CTable].self, from: result)
+                        let decoded = try JSONDecoder().decode([CTable].self, from: data)
                         DataService.instance.saveTableData(rawData: decoded[0])
                     }
                     
                     DispatchQueue.main.async {
                         self.reloadTable()
                         self.ratesDateLbl.text = DataService.instance.currencyDate
-                        self.activityIndicator.stopAnimating()
                     }
                     
                 } catch {
-                    debugPrint("Error while decoding JSON data from API", error)
+                    if let dataResponse = String.init(data: data, encoding: .utf8) {
+                        ShowError.alert(title: "Brak danych", message: "Dla podanych parametrów brak dostępnych kursów walut. Odpowiedź z serwera:\n\(dataResponse)", self)
+                    } else {
+                        ShowError.alert(title: "Błąd", message: "Wystąpił bliżej nieokreślony błąd. Proszę spróbować jeszcze raz dla innych parametrów.", self)
+                    }
                 }
                 
-                
-                
-            } else {
-#warning("Add Error message")
             }
+            
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+            
         }
+        
     }
     
     
-    
-    
+    private func refreshData() {
+        activityIndicator.startAnimating()
+        
+        if DataService.instance.ratesCount(for: currentTable) > 0 {
+            reloadTable()
+        } else {
+            downloadData()
+        }
+    }
     
     
     
@@ -132,7 +111,7 @@ class MainVC: UIViewController {
 extension MainVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
             
@@ -163,10 +142,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource{
         
         return MainViewCell()
     }
-    
-    
-    
-    
     
     
     

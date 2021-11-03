@@ -137,7 +137,7 @@ class DetailsVC: UIViewController {
         Networking.fetchHistory(for: currency.code, in: currentTable, from: fromDate, to: toDate) { result in
             switch result {
             case .failure(let error):
-                print(error.localizedDescription)
+                ShowError.alert(title: "Niezdefiniowany błąd sieciowy", message: error.localizedDescription, self)
             case .success(let data):
                 do {
                     if self.currentTable != .c {
