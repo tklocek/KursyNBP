@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -180,7 +181,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebF-A3-FJJ">
-                                        <rect key="frame" x="17" y="64" width="26" height="26"/>
+                                        <rect key="frame" x="17" y="55" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="bqj-LH-0G0"/>
                                             <constraint firstAttribute="width" constant="26" id="tdo-nQ-SF6"/>
@@ -192,7 +193,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4z-ZU-NgO">
-                                        <rect key="frame" x="371" y="64" width="26" height="26"/>
+                                        <rect key="frame" x="371" y="55" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="26" id="pzm-As-mTb"/>
                                             <constraint firstAttribute="height" constant="26" id="rBd-Go-rEp"/>
@@ -235,10 +236,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96607202290000005" green="0.97287768129999996" blue="0.97967308760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="DetailBackground"/>
                                 <constraints>
                                     <constraint firstItem="zim-l0-xfX" firstAttribute="leading" secondItem="H3M-pT-phx" secondAttribute="trailing" constant="2" id="1cR-8u-pO1"/>
-                                    <constraint firstItem="a4z-ZU-NgO" firstAttribute="top" secondItem="f2Q-xI-0Wi" secondAttribute="top" constant="64" id="2JG-X6-eyk"/>
+                                    <constraint firstItem="a4z-ZU-NgO" firstAttribute="top" secondItem="f2Q-xI-0Wi" secondAttribute="top" constant="55" id="2JG-X6-eyk"/>
                                     <constraint firstAttribute="trailing" secondItem="a4z-ZU-NgO" secondAttribute="trailing" constant="17" id="971-DL-2zT"/>
                                     <constraint firstAttribute="trailing" secondItem="zim-l0-xfX" secondAttribute="trailing" constant="10" id="9h6-57-oTf"/>
                                     <constraint firstAttribute="bottom" secondItem="H3M-pT-phx" secondAttribute="bottom" constant="2" id="Bud-mh-YUi"/>
@@ -252,7 +253,7 @@
                                     <constraint firstItem="zim-l0-xfX" firstAttribute="top" secondItem="Pb8-l0-9d1" secondAttribute="bottom" constant="10" id="TsB-0m-JCR"/>
                                     <constraint firstItem="bvu-v8-Zxy" firstAttribute="leading" secondItem="f2Q-xI-0Wi" secondAttribute="leading" constant="10" id="Vi6-OK-kda"/>
                                     <constraint firstItem="H3M-pT-phx" firstAttribute="leading" secondItem="bvu-v8-Zxy" secondAttribute="trailing" constant="2" id="b5a-Ic-e2M"/>
-                                    <constraint firstItem="ebF-A3-FJJ" firstAttribute="top" secondItem="f2Q-xI-0Wi" secondAttribute="top" constant="64" id="cmn-ss-eSK"/>
+                                    <constraint firstItem="ebF-A3-FJJ" firstAttribute="top" secondItem="f2Q-xI-0Wi" secondAttribute="top" constant="55" id="cmn-ss-eSK"/>
                                     <constraint firstItem="sRK-xn-Kfg" firstAttribute="top" secondItem="f2Q-xI-0Wi" secondAttribute="topMargin" constant="3" id="gZT-c9-JeP"/>
                                     <constraint firstAttribute="bottom" secondItem="zim-l0-xfX" secondAttribute="bottom" constant="10" id="iDz-eu-fca"/>
                                     <constraint firstItem="bvu-v8-Zxy" firstAttribute="top" secondItem="Pb8-l0-9d1" secondAttribute="bottom" constant="10" id="ii4-eZ-g6E"/>
@@ -445,6 +446,9 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <namedColor name="DetailBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
