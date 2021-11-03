@@ -29,6 +29,7 @@
 		708938252731102A00942294 /* CurrencyHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708938242731102A00942294 /* CurrencyHist.swift */; };
 		70893827273128E300942294 /* DetailCViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893826273128E300942294 /* DetailCViewCell.swift */; };
 		7089382B2732F83800942294 /* ShowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7089382A2732F83800942294 /* ShowError.swift */; };
+		7089382D27330CF200942294 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7089382C27330CF200942294 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		708938242731102A00942294 /* CurrencyHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHist.swift; sourceTree = "<group>"; };
 		70893826273128E300942294 /* DetailCViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCViewCell.swift; sourceTree = "<group>"; };
 		7089382A2732F83800942294 /* ShowError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowError.swift; sourceTree = "<group>"; };
+		7089382C27330CF200942294 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				70269382272D46EF00B9C8DD /* Decimal.swift */,
+				7089382C27330CF200942294 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7089382D27330CF200942294 /* String.swift in Sources */,
 				708938252731102A00942294 /* CurrencyHist.swift in Sources */,
 				70269379272C54D200B9C8DD /* CTable.swift in Sources */,
 				70269381272C918800B9C8DD /* Helpers.swift in Sources */,

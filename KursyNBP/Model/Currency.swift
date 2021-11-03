@@ -13,6 +13,4 @@ struct Currency: Codable {
     var code: String
     var multiplier: Int
     var value: Decimal
-    
-    
 }

@@ -27,7 +27,7 @@ class DataService {
         let rates = rawData.rates
         
         rates.forEach { oneRate in
-            let name = oneRate.currency
+            let name = oneRate.currency.firstCapitalized
             let code = oneRate.code
             let (multi, value) = self.changeDecimalPoint(value: oneRate.mid)
             
@@ -50,7 +50,7 @@ class DataService {
         let rates = rawData.rates
         
         rates.forEach { oneRate in
-            let name = oneRate.currency
+            let name = oneRate.currency.firstCapitalized
             let code = oneRate.code
             
             let average = (oneRate.ask + oneRate.bid) / 2
