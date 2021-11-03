@@ -29,6 +29,7 @@
 		70893823273102DB00942294 /* CTableHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893822273102DB00942294 /* CTableHist.swift */; };
 		708938252731102A00942294 /* CurrencyHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708938242731102A00942294 /* CurrencyHist.swift */; };
 		70893827273128E300942294 /* DetailCViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893826273128E300942294 /* DetailCViewCell.swift */; };
+		7089382B2732F83800942294 /* ShowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7089382A2732F83800942294 /* ShowError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		70893822273102DB00942294 /* CTableHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableHist.swift; sourceTree = "<group>"; };
 		708938242731102A00942294 /* CurrencyHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHist.swift; sourceTree = "<group>"; };
 		70893826273128E300942294 /* DetailCViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCViewCell.swift; sourceTree = "<group>"; };
+		7089382A2732F83800942294 /* ShowError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,16 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				70269380272C918800B9C8DD /* Helpers.swift */,
-				702693882730506100B9C8DD /* New Group */,
+				7089382A2732F83800942294 /* ShowError.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		702693882730506100B9C8DD /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +344,7 @@
 				70269379272C54D200B9C8DD /* CTable.swift in Sources */,
 				70269381272C918800B9C8DD /* Helpers.swift in Sources */,
 				70269364272C0ED500B9C8DD /* MainViewCell.swift in Sources */,
+				7089382B2732F83800942294 /* ShowError.swift in Sources */,
 				70269370272C4F6000B9C8DD /* Networking.swift in Sources */,
 				70893823273102DB00942294 /* CTableHist.swift in Sources */,
 				70269377272C545200B9C8DD /* DataService.swift in Sources */,

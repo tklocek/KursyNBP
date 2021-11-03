@@ -11,18 +11,13 @@ enum CurrencyTable{
     case a,b,c
 }
 
-enum NetworkError: Error {
-    case InvalidStringQuery
-    case tooManyDaysBetween
-}
 
 class Networking {
     
     func fetchTable(table: CurrencyTable, completion: @escaping (_ result: Data?) -> Void   ) {
         let query = "https://api.nbp.pl/api/exchangerates/tables/\(table)"
         
-        guard let url = URL(string: query) else { fatalError("Invalid string query")}
-
+        guard let url = URL(string: query) else { fatalError("Invalid string query") }
         
         
         URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
@@ -31,22 +26,22 @@ class Networking {
     }
     
     
-    func fetchHistory(for code: String, in table: CurrencyTable, from startDate:String, to endDate:String,  completion: @escaping (_ result: Data?) -> Void) {
-   
+    static func fetchHistory(for code: String, in table: CurrencyTable, from startDate: String, to endDate: String, completion: @escaping (Result<Data, Error>) -> ()) {
         let query = "https://api.nbp.pl/api/exchangerates/rates/\(table)/\(code)/\(startDate)/\(endDate)/"
         
-        guard let url = URL(string: query) else { fatalError("Invalid string query")}
-
+        guard let url = URL(string: query) else { fatalError("Invalid string query") }
         
         
         URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-            completion(data)
+            guard let responseData = data, error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            
+            completion(.success(responseData))
+            
         }).resume()
         
     }
-
-    
-   
-    
     
 }

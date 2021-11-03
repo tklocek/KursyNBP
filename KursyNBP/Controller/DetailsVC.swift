@@ -35,13 +35,8 @@ class DetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
-        currencyNameLbl.text = currency.currency
-        currencyCodeLbl.text = currency.code
         
         setupView()
         
@@ -49,9 +44,13 @@ class DetailsVC: UIViewController {
     
     
     func setupView() {
+        currencyNameLbl.text = currency.currency
+        currencyCodeLbl.text = currency.code
+        
         calendarTo.maximumDate = Date()
         calendarFrom.date = Calendar.current.date(byAdding: .day, value: -30, to: Date() ) ?? Date()
         calendarFrom.maximumDate = Date()
+        
         downloadData()
         activityIndicator.stopAnimating()
     }
@@ -93,12 +92,12 @@ class DetailsVC: UIViewController {
             downloadData()
         }
        catch DateError.fromMoreThanTo {
-           errorMessage(title: "Źle wybrane daty", message: "Data początkowa musi być mniejsza lub równa dacie końcowej. Zmień daty aby kontynuować.")
+           ShowError.alert(title: "Źle wybrane daty", message: "Data początkowa musi być mniejsza lub równa dacie końcowej. Zmień daty aby kontynuować.", self)
         }
        catch DateError.tooManyDaysBetween {
-           errorMessage(title: "Za duża odległość pomiędzy dniami", message: "Bank NBP wymaga aby maksymalny odstęp między datami nie był większy niż 90 dni. \nProszę wybrać inne daty.")
+           ShowError.alert(title: "Za duża odległość pomiędzy dniami", message: "Bank NBP wymaga aby maksymalny odstęp między datami nie był większy niż 90 dni. \nProszę wybrać inne daty.", self)
        } catch {
-           errorMessage(title: "Błąd", message: "Wystąpił nieokreślony błąd")
+           ShowError.alert(title: "Błąd", message: "Wystąpił nieokreślony błąd", self)
        }
         
     }
@@ -106,21 +105,14 @@ class DetailsVC: UIViewController {
     
     private func validateDateSetup() throws {
         let fromDate = calendarFrom.date
-        
         let toDate = calendarTo.date
-        
-        print(fromDate)
-        print(toDate)
-        
-        
+
         if fromDate > toDate {
             throw DateError.fromMoreThanTo
         }
         if numberOfDaysBetween(fromDate, and: toDate) > 90 {
             throw DateError.tooManyDaysBetween
         }
-        
-        
     }
     
     private func numberOfDaysBetween(_ from: Date, and to: Date) -> Int {
@@ -135,62 +127,48 @@ class DetailsVC: UIViewController {
         return 0
     }
 
-
-    private func errorMessage(title: String, message: String) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController (title: title , message: message , preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(ok)
-            
-            self.present(alert, animated: true)
-        }
-        
-    }
-    
-    
-    
     
     private func downloadData() {
         activityIndicator.startAnimating()
         
-        let net = Networking()
-        
         let fromDate = dateToStr(date: calendarFrom.date, format: "yyyy-MM-dd")
         let toDate = dateToStr(date: calendarTo.date, format: "yyyy-MM-dd")
         
-        net.fetchHistory(for: currency.code, in: currentTable, from: fromDate, to: toDate) { result in
-            if let result = result {
-                
+        Networking.fetchHistory(for: currency.code, in: currentTable, from: fromDate, to: toDate) { result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
                 do {
                     if self.currentTable != .c {
-                        let decoded = try JSONDecoder().decode(ABTableHist.self, from: result)
+                        let decoded = try JSONDecoder().decode(ABTableHist.self, from: data)
                         DataService.instance.saveHistData(rawData: decoded)
                     } else {
-                        let decoded = try JSONDecoder().decode(CTableHist.self, from: result)
+                        let decoded = try JSONDecoder().decode(CTableHist.self, from: data)
                         DataService.instance.saveHistData(rawData: decoded)
                     }
                     
-                    DispatchQueue.main.async {
-                        self.reloadTable()
-                        self.activityIndicator.stopAnimating()
-                    }
-                    
+                    self.reloadTable()
                 } catch {
-                    debugPrint("Error while decoding JSON data from API", error)
+                    if let dataResponse = String.init(data: data, encoding: .utf8) {
+                        ShowError.alert(title: "Brak danych", message: "Dla podanych parametrów brak dostępnych kursów walut. Odpowiedź z serwera:\n\(dataResponse)", self)
+                    } else {
+                        ShowError.alert(title: "Błąd", message: "Wystąpił bliżej nieokreślony błąd. Proszę spróbować jeszcze raz dla innych parametrów.", self)
+                    }
                 }
-                
-                
-                
-            } else {
-#warning("Add Error message")
+            }
+            
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
             }
         }
-        
-        
     }
     
+    
     private func reloadTable() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -214,7 +192,6 @@ extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
                 }
     
                 cell.updateView(histData: cellData)
-    
                 return cell
             }
             
@@ -225,27 +202,13 @@ extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
                 {
                     return DetailABViewCell()
                 }
-    
+                
                 cell.updateView(histData: cellData)
-    
                 return cell
             }
             
-            
             return DetailABViewCell()
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
     
