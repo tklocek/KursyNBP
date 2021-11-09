@@ -24,7 +24,7 @@
 		70269381272C918800B9C8DD /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269380272C918800B9C8DD /* Helpers.swift */; };
 		70269383272D46EF00B9C8DD /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70269382272D46EF00B9C8DD /* Decimal.swift */; };
 		702693852730371A00B9C8DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702693842730371A00B9C8DD /* Main.storyboard */; };
-		70893821273102C900942294 /* ABTableHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893820273102C900942294 /* ABTableHist.swift */; };
+		70716C082739F5B7008A61E6 /* ABTableHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70716C072739F5B7008A61E6 /* ABTableHist.swift */; };
 		70893823273102DB00942294 /* CTableHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893822273102DB00942294 /* CTableHist.swift */; };
 		708938252731102A00942294 /* CurrencyHist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708938242731102A00942294 /* CurrencyHist.swift */; };
 		70893827273128E300942294 /* DetailCViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70893826273128E300942294 /* DetailCViewCell.swift */; };
@@ -71,7 +71,7 @@
 		70269380272C918800B9C8DD /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		70269382272D46EF00B9C8DD /* Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
 		702693842730371A00B9C8DD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		70893820273102C900942294 /* ABTableHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ABTableHist.swift; path = "../../../../../../Desktop/Good.Energy System/ABTableHist.swift"; sourceTree = "<group>"; };
+		70716C072739F5B7008A61E6 /* ABTableHist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABTableHist.swift; sourceTree = "<group>"; };
 		70893822273102DB00942294 /* CTableHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTableHist.swift; sourceTree = "<group>"; };
 		708938242731102A00942294 /* CurrencyHist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHist.swift; sourceTree = "<group>"; };
 		70893826273128E300942294 /* DetailCViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCViewCell.swift; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 			children = (
 				7026936D272C479000B9C8DD /* ABTable.swift */,
 				70269378272C54D200B9C8DD /* CTable.swift */,
+				70716C072739F5B7008A61E6 /* ABTableHist.swift */,
 				7026937A272C5FC400B9C8DD /* Currency.swift */,
-				70893820273102C900942294 /* ABTableHist.swift */,
 				708938242731102A00942294 /* CurrencyHist.swift */,
 				70893822273102DB00942294 /* CTableHist.swift */,
 			);
@@ -358,7 +358,7 @@
 				7026936E272C479000B9C8DD /* ABTable.swift in Sources */,
 				7026937B272C5FC400B9C8DD /* Currency.swift in Sources */,
 				7008AA6D272987530016A583 /* SceneDelegate.swift in Sources */,
-				70893821273102C900942294 /* ABTableHist.swift in Sources */,
+				70716C082739F5B7008A61E6 /* ABTableHist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
