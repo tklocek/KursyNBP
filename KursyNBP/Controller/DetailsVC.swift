@@ -30,6 +30,16 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var reloadBtn: UIButton!
     @IBOutlet weak var calendarFrom: UIDatePicker!
     @IBOutlet weak var calendarTo: UIDatePicker!
+    private var doneGettingData: Bool = true {
+        didSet {
+            DispatchQueue.main.async {
+                switch self.doneGettingData {
+                case true: self.activityIndicator.stopAnimating()
+                case false: self.activityIndicator.startAnimating()
+                }
+            }
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -44,6 +54,7 @@ class DetailsVC: UIViewController {
     
     
     func setupView() {
+        self.doneGettingData = false
         currencyNameLbl.text = currency.currency
         currencyCodeLbl.text = currency.code
         
@@ -52,7 +63,6 @@ class DetailsVC: UIViewController {
         calendarFrom.maximumDate = Date()
         
         downloadData()
-        activityIndicator.stopAnimating()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,7 +75,7 @@ class DetailsVC: UIViewController {
     }
     
     @IBAction func reloadBtnPressed(_ sender: Any) {
-        activityIndicator.startAnimating()
+        self.doneGettingData = false
         DataService.instance.clearHistData()
         reloadTable()
         downloadData()
@@ -158,9 +168,7 @@ class DetailsVC: UIViewController {
                 }
             }
             
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-            }
+            self.doneGettingData = true
         }
     }
     

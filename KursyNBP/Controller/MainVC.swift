@@ -18,6 +18,16 @@ class MainVC: UIViewController {
     
     //Vars
     private var currentTable: CurrencyTable = .a
+    private var doneGettingData: Bool = true {
+        didSet {
+            DispatchQueue.main.async {
+                switch self.doneGettingData {
+                case true: self.activityIndicator.stopAnimating()
+                case false: self.activityIndicator.startAnimating()
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +40,7 @@ class MainVC: UIViewController {
     
     
     @IBAction func refreshBtnPressed(_ sender: Any) {
+        doneGettingData = false
         DataService.instance.clearData(for: currentTable)
         reloadTable()
         refreshData()
@@ -49,7 +60,6 @@ class MainVC: UIViewController {
     
     private func reloadTable() {
         tableView.reloadData()
-        
     }
     
     private func downloadData() {
@@ -79,23 +89,19 @@ class MainVC: UIViewController {
                         ShowError.alert(title: "Błąd", message: "Wystąpił bliżej nieokreślony błąd. Proszę spróbować jeszcze raz dla innych parametrów.", self)
                     }
                 }
-                
             }
-            
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-            }
-            
+            self.doneGettingData = true
         }
         
     }
     
     
     private func refreshData() {
-        activityIndicator.startAnimating()
+        self.doneGettingData = false
         
         if DataService.instance.ratesCount(for: currentTable) > 0 {
             reloadTable()
+            self.doneGettingData = true
         } else {
             downloadData()
         }
